@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/layout :: head('About')}"></head>
+<body class="d-flex flex-column min-vh-100">
+<nav th:replace="~{fragments/layout :: navbar('about')}"></nav>
+
+<main class="container flex-grow-1 my-4" style="max-width: 800px">
+  <h1 class="h3 mb-3">About PawCart</h1>
+  <p class="lead">PawCart is a pet supply retailer built for pet owners who want quality products without the runaround.</p>
+
+  <div class="row g-3 my-4">
+    <div class="col-md-4">
+      <div class="card h-100 text-center"><div class="card-body">
+        <div class="fs-1">🚚</div>
+        <h2 class="h6 mt-2">Regional distribution</h2>
+        <p class="small text-muted mb-0">Stock is held in distribution centres across Ontario so orders ship fast.</p>
+      </div></div>
+    </div>
+    <div class="col-md-4">
+      <div class="card h-100 text-center"><div class="card-body">
+        <div class="fs-1">🏷️</div>
+        <h2 class="h6 mt-2">Trusted brands</h2>
+        <p class="small text-muted mb-0">We carry established brands for dogs, cats, birds, fish and small animals.</p>
+      </div></div>
+    </div>
+    <div class="col-md-4">
+      <div class="card h-100 text-center"><div class="card-body">
+        <div class="fs-1">💙</div>
+        <h2 class="h6 mt-2">Made with care</h2>
+        <p class="small text-muted mb-0">Every product is listed with clear pricing, brand and category details.</p>
+      </div></div>
+    </div>
+  </div>
+
+  <h2 class="h5">Our team</h2>
+  <p>PawCart was built as the CPAN-228 team project by Gianni and Ikechukwu.</p>
+</main>
+
+<footer th:replace="~{fragments/layout :: footer}"></footer>
+<script th:replace="~{fragments/layout :: scripts}"></script>
+</body>
+</html>

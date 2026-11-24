@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/layout :: head('Brands')}"></head>
+<body class="d-flex flex-column min-vh-100">
+<nav th:replace="~{fragments/layout :: navbar('brands')}"></nav>
+
+<main class="container flex-grow-1 my-4">
+  <h1 class="h3 mb-3">Shop by brand</h1>
+
+  <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-3">
+    <div class="col" th:each="b : ${brands}">
+      <div class="card h-100">
+        <div class="card-body">
+          <h2 class="h5 card-title" th:text="${b.name}">Brand</h2>
+          <p class="text-muted mb-2" th:text="'Origin: ' + ${b.country}">Origin</p>
+          <a th:if="${b.website != null and !#strings.isEmpty(b.website)}"
+             th:href="${b.website}" target="_blank" rel="noopener" class="small">Visit website</a>
+        </div>
+        <div class="card-footer bg-white border-0">
+          <a class="btn btn-primary w-100" th:href="@{/items(brandId=${b.id})}">Shop this brand</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer th:replace="~{fragments/layout :: footer}"></footer>
+<script th:replace="~{fragments/layout :: scripts}"></script>
+</body>
+</html>

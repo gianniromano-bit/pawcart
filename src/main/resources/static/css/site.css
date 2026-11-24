@@ -1,0 +1,52 @@
+/* PawCart site styles (Ikechukwu - D1). Loaded by fragments/layout.html */
+:root {
+  --paw-primary: #0d6efd;
+  --paw-soft: #eef4ff;
+}
+
+.hero {
+  background: linear-gradient(135deg, #0d6efd 0%, #6f42c1 100%);
+  color: #fff;
+  border-radius: 1rem;
+  padding: 3rem 1.5rem;
+}
+
+.hero h1 { font-weight: 700; }
+
+.pet-tile {
+  text-decoration: none;
+  color: inherit;
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+
+.pet-tile:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15);
+}
+
+.pet-tile .emoji { font-size: 2.5rem; }
+
+.item-card { transition: box-shadow .15s ease; }
+.item-card:hover { box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .12); }
+
+.item-img {
+  height: 160px;
+  object-fit: cover;
+  background: var(--paw-soft);
+}
+
+.item-img-placeholder {
+  height: 160px;
+  background: var(--paw-soft);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+}
+
+.filter-bar { background: var(--paw-soft); border-radius: .75rem; }
+
+@media (max-width: 575.98px) {
+  .hero { padding: 2rem 1rem; }
+  .hero h1 { font-size: 1.75rem; }
+}
