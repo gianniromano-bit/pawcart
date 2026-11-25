@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/layout :: head('Home')}"></head>
+<body class="d-flex flex-column min-vh-100">
+<nav th:replace="~{fragments/layout :: navbar('home')}"></nav>
+
+<main class="container flex-grow-1 my-4">
+
+  <!-- Hero -->
+  <section class="hero text-center mb-5">
+    <h1>Everything your pet needs, delivered.</h1>
+    <p class="lead mb-4">Food, toys, grooming and health products from brands you trust.</p>
+    <a class="btn btn-light btn-lg me-2" th:href="@{/items}">Shop all products</a>
+    <a class="btn btn-outline-light btn-lg" th:href="@{/brands}">Browse brands</a>
+  </section>
+
+  <!-- Shop by pet -->
+  <section class="mb-5">
+    <h2 class="h4 mb-3">Shop by pet</h2>
+    <div class="row row-cols-2 row-cols-md-3 row-cols-lg-5 g-3">
+      <div class="col" th:each="p : ${petTypes}">
+        <a class="card pet-tile text-center h-100" th:href="@{/items(petType=${p})}">
+          <div class="card-body">
+            <div class="emoji" th:text="${p.name() == 'DOG'} ? '🐶' : (${p.name() == 'CAT'} ? '🐱' : (${p.name() == 'BIRD'} ? '🐦' : (${p.name() == 'FISH'} ? '🐟' : '🐹')))">🐾</div>
+            <div class="fw-semibold mt-2" th:text="${#strings.capitalize(#strings.toLowerCase(#strings.replace(p.name(), '_', ' ')))}">Dog</div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- New arrivals -->
+  <section>
+    <div class="d-flex justify-content-between align-items-center mb-3">
+      <h2 class="h4 mb-0">New arrivals</h2>
+      <a th:href="@{/items(sort='createdAt',dir='desc')}">View all</a>
+    </div>
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-4 g-3">
+      <div class="col" th:each="item : ${featured}">
+        <div class="card item-card h-100">
+          <img th:if="${item.imageUrl != null and !#strings.isEmpty(item.imageUrl)}"
+               th:src="${item.imageUrl}" class="card-img-top item-img" th:alt="${item.name}">
+          <div th:unless="${item.imageUrl != null and !#strings.isEmpty(item.imageUrl)}"
+               class="item-img-placeholder rounded-top">🐾</div>
+          <div class="card-body">
+            <h3 class="h6 card-title" th:text="${item.name}">Item</h3>
+            <p class="text-muted small mb-1" th:text="${item.brand != null} ? ${item.brand.name} : ''">Brand</p>
+            <p class="fw-bold mb-0" th:text="'$' + ${#numbers.formatDecimal(item.price, 1, 2)}">$0.00</p>
+          </div>
+          <div class="card-footer bg-white border-0">
+            <a class="btn btn-sm btn-outline-primary w-100" th:href="@{/items/{id}(id=${item.id})}">View</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer th:replace="~{fragments/layout :: footer}"></footer>
+<script th:replace="~{fragments/layout :: scripts}"></script>
+</body>
+</html>
