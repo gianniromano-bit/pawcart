@@ -7,6 +7,7 @@
   <title>Item saved - PawCart</title>
 </head>
 <body>
+<div th:replace="~{fragments/userbar :: userbar}"></div>
 <div class="container my-4">
   <div class="alert alert-success">Item saved.</div>
   <h1 class="h3" th:text="${item.name}"></h1>
