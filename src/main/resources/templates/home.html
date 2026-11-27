@@ -2,6 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:replace="~{fragments/layout :: head('Home')}"></head>
 <body class="d-flex flex-column min-vh-100">
+  <div th:replace="~{fragments/userbar :: userbar}"></div>
 <nav th:replace="~{fragments/layout :: navbar('home')}"></nav>
 
 <main class="container flex-grow-1 my-4">

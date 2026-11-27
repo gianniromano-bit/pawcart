@@ -16,3 +16,16 @@ Spring Boot 3, Thymeleaf, Spring Data JPA, Spring Security, Spring Data REST (un
 Open http://localhost:8080. Add an item at http://localhost:8080/items/new. H2 console: http://localhost:8080/h2-console (JDBC URL `jdbc:h2:file:./data/pawcart`).
 
 Sample data is loaded from `data.sql` on every start.
+
+## Security (Deliverable 2)
+- Registration at `/register` (always creates a CUSTOMER), passwords encoded with BCrypt
+- `Customer` implements `UserDetails`; roles: ADMIN, STAFF, CUSTOMER
+- Public: home, login, register, browsing items. STAFF and ADMIN can add items. ADMIN only: delete, `/admin/**`, `/api/**`, H2 console
+
+Demo accounts (created at startup):
+
+| Username | Password | Role |
+|---|---|---|
+| admin | Admin123! | ADMIN |
+| staff | Staff123! | STAFF |
+| customer | Customer123! | CUSTOMER |
